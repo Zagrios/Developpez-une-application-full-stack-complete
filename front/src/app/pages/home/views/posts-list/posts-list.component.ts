@@ -21,7 +21,6 @@ export class PostsListComponent {
     constructor(
         postService: PostService,
     ) {
-        console.log("allo");
         postService.getPosts().subscribe({
             next: posts => this.posts$.next(posts),
             error: _ => this.error$.next(true),

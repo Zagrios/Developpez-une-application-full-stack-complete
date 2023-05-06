@@ -25,16 +25,16 @@
 <!-- IF NOT ON MOBILE : SHOW CONTENT -->
 <ng-template *ngIf="!(isMobile$|async); else isMobile" [ngTemplateOutlet]="appContent"></ng-template>
 
-<!-- ELSE : SHOW IN SIDENAV -->
+<!-- ELSE : SHOW CONTENT WITH SIDENAV -->
 <ng-template #isMobile>
 
     <mat-sidenav-container>
         <mat-sidenav #sidenav mode="over" position="end" [fixedInViewport]="true">
-            <div>
+            <div id="page-nav-buttons">
                 <button mat-button routerLink="/home/posts" [color]="isOnRoute('/home/posts') && 'primary'">Articles</button>
                 <button mat-button routerLink="/home/topics" [color]="isOnRoute('/home/topics') && 'primary'">Thèmes</button>
             </div>
-            <button mat-mini-fab routerLink="/home/me" [color]="isOnRoute('/home/me') && 'primary'">
+            <button id="user-profile-btn" mat-fab routerLink="/home/me" [color]="isOnRoute('/home/me') && 'primary'">
                 <mat-icon>person_filled</mat-icon>
             </button>
         </mat-sidenav>

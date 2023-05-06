@@ -20,7 +20,6 @@ export class ApiService {
     }
 
     public get<T = unknown>(route: string): Observable<T> {
-        console.log(this.createUrl(route));
         return this.http.get<T>(this.createUrl(route)).pipe(shareReplay(1));
     }
 

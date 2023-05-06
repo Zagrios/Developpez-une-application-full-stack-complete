@@ -20,7 +20,7 @@ export class CreatePostComponent {
 
     public readonly postForm = this.fb.group({
         topicId: [0, [Validators.required, Validators.min(1)]],
-        title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+        title: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
         content: ['', [Validators.required, Validators.minLength(100)]]
     });
 

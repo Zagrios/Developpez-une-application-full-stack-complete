@@ -10,13 +10,6 @@ import { screenWidth$ } from 'src/app/core/constants/screen-width.constant';
     ]
 })
 
-export class HomeComponent implements OnInit {
-
+export class HomeComponent{
     public readonly isMobile$ = screenWidth$.pipe(map(width => width <= 620 ? true : false));
-
-    constructor() {
-        //this.isMobile$.subscribe(console.log);
-    }
-
-    ngOnInit() { }
 }

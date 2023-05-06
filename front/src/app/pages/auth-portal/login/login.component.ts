@@ -32,7 +32,6 @@ export class LoginComponent {
         }
 
         this.auth.login(loginReq).then(logged => {
-            console.log("logged: ", logged);
             if(!logged){ return; }
             this.router.navigateByUrl('/home');
         });

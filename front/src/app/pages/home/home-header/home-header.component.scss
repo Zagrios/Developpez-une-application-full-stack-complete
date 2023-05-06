@@ -43,6 +43,27 @@ mat-sidenav {
     
     padding: 16px;
     text-align: center;
+
+    padding-top: 100px;
+
+    #page-nav-buttons{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        
+        button{
+            width: fit-content;
+            font-size: 1.3rem;
+        }
+    }
+
+    #user-profile-btn{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        translate: -30% -30%;
+    }
 }
 
 mat-sidenav-content {

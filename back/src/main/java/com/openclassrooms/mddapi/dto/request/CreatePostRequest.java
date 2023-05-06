@@ -16,7 +16,7 @@ public class CreatePostRequest {
     private Long topicId;
 
     @NotBlank(message = "Name required")
-    @Size(min = 4, max = 50, message = "Post title is not valid")
+    @Size(min = 4, max = 100, message = "Post title is not valid")
     private String title;
 
     @NotBlank(message = "Content required")

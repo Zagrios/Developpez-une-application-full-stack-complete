@@ -17,6 +17,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CreatePostComponent } from './views/new-post/create-post.component';
 import { PostViewComponent } from './views/post-view/post-view.component';
+import { LineBreak } from 'src/app/core/pipes/line-break.pipe';
 
 @NgModule({
     imports: [
@@ -42,6 +43,7 @@ import { PostViewComponent } from './views/post-view/post-view.component';
         UserProfileComponent,
         CreatePostComponent,
         PostViewComponent,
+        LineBreak,
     ],
     providers: [],
 })

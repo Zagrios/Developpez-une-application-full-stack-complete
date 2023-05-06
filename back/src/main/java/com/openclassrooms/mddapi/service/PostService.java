@@ -1,9 +1,14 @@
 package com.openclassrooms.mddapi.service;
 
+import com.openclassrooms.mddapi.dto.request.CommentRequest;
 import com.openclassrooms.mddapi.dto.request.CreatePostRequest;
+import com.openclassrooms.mddapi.dto.response.CommentResponse;
+import com.openclassrooms.mddapi.mapper.CommentMapper;
+import com.openclassrooms.mddapi.model.Comment;
 import com.openclassrooms.mddapi.model.Post;
 import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.model.User;
+import com.openclassrooms.mddapi.repository.CommentRepository;
 import com.openclassrooms.mddapi.repository.PostRepository;
 import com.openclassrooms.mddapi.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +28,12 @@ public class PostService {
 
     @Autowired
     private TopicRepository topicRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private CommentMapper commentMapper;
 
     public List<Post> getPosts(){
         return this.postRepository.findAllByOrderByDateDesc();
@@ -50,6 +61,22 @@ public class PostService {
         return user.getSubscriptions().stream().flatMap(topic -> {
             return this.postRepository.findAllByTopicId(topic.getId()).stream();
         }).collect(Collectors.toList());
+    }
+
+    public List<CommentResponse> getComments(Long id){
+        return this.commentMapper.toDto(this.commentRepository.findAllByPostId(id));
+    }
+
+    public CommentResponse addComment(Long postId, CommentRequest commentRequest){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Post post = this.getPostById(postId);
+        Comment comment = Comment.builder()
+                .user(user)
+                .post(post)
+                .content(commentRequest.getContent())
+                .build();
+
+        return this.commentMapper.toDto(this.commentRepository.save(comment));
     }
 
 }

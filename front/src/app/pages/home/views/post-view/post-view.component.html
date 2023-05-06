@@ -10,7 +10,22 @@
         <span>{{(post$|async)?.author?.username}}</span>
         <span>{{(post$|async)?.topic?.name}}</span>
     </div>
-    <p>{{(post$|async)?.content}}</p>
+    <p [innerHTML]="(post$|async)?.content|lineBreak"></p>
 </div>
 <separator></separator>
-TODO comments
+<ul>
+    Commentaires
+    <comment-item *ngFor="let comment of (comments$|async)" [comment]="comment"></comment-item>
+</ul>
+<form (submit)="addComment()" [formGroup]="commentForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Écrivez ici votre commentaire</mat-label>
+        <textarea matInput matNativeControl type="text" id="content" formControlName="content"></textarea>
+        <mat-error *ngIf="commentContentInvalid">
+            Le contenu du commentaire est invalide (entre 10 et 255 caractères)
+        </mat-error>
+    </mat-form-field>
+    <button mat-mini-fab color="" type="submit">
+        <mat-icon color="primary" class="send">send</mat-icon>
+    </button>
+</form>

@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { CreatePostRequest } from '../models/dto/posts/new-post-request.interface';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post.interface';
+import { Comment } from '../models/comment.interface';
 
 @Injectable({providedIn: 'root'})
 export class PostService {
@@ -18,7 +19,6 @@ export class PostService {
     }
 
     public getPosts(): Observable<Post[]>{
-        console.log("oui");
         return this.api.get(this.BASE_ROUTE);
     }
 
@@ -30,6 +30,12 @@ export class PostService {
         return this.api.post(this.BASE_ROUTE, req);
     }
 
+    public getComments(id: string): Observable<Comment[]>{
+        return this.api.get(this.buildRoute(id, 'comments'));
+    }
 
+    public addComment(id: string, content: string): Observable<Comment>{
+        return this.api.post(this.buildRoute(id, 'comments'), {content});
+    }
     
 }

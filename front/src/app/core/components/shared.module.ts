@@ -9,6 +9,7 @@ import { TopicItemComponent } from './topic-item/topic-item.component';
 import { CommonModule } from '@angular/common';
 import { SeparatorComponent } from './separator/separator.component';
 import { RouterModule } from '@angular/router';
+import { CommentItemComponent } from './comment-item/comment-item.component';
 
 @NgModule({
     imports: [
@@ -23,12 +24,14 @@ import { RouterModule } from '@angular/router';
         PostItemComponent,
         TopicItemComponent,
         SeparatorComponent,
+        CommentItemComponent,
     ],
     declarations: [
         AppIconComponent,
         PostItemComponent,
         TopicItemComponent,
         SeparatorComponent,
+        CommentItemComponent,
     ],
     providers: [],
 })

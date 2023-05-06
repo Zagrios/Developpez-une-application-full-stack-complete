@@ -1,0 +1,10 @@
+<mat-card (click)="goToPost()">
+    <mat-card-title>{{post.title}}</mat-card-title>
+    <mat-card-content>
+        <div id="post-primary-infos">
+            <span>{{postDate()}}</span>
+            <span>{{post.author.username}}</span>
+        </div>
+        <p>{{post.content}}</p>
+    </mat-card-content>
+</mat-card>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginRequest } from 'src/app/core/models/auth/requests/login-request.interface';
+import { LoginRequest } from 'src/app/core/models/dto/auth/requests/login-request.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -32,6 +32,7 @@ export class LoginComponent {
         }
 
         this.auth.login(loginReq).then(logged => {
+            console.log("logged: ", logged);
             if(!logged){ return; }
             this.router.navigateByUrl('/home');
         });

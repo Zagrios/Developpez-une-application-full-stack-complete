@@ -1,0 +1,50 @@
+:host{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#post{
+    padding: 2rem 3rem 0 3rem;
+    overflow: hidden;
+
+    width: 100%;
+
+    #post-header{
+
+        position: relative;
+
+        h1{
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+
+        button{
+            position: absolute;
+            top: 0;
+            translate: -100% -5px;
+        }
+
+    }
+    
+    
+
+    #primary-infos{
+        max-width: 100%;
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        column-gap: 70px;
+        margin-bottom: 20px;
+    }
+
+    p{
+        overflow-wrap: break-word;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
+import { screenWidth$ } from 'src/app/core/constants/screen-width.constant';
 
 @Component({
     selector: 'home',
@@ -9,7 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomeComponent implements OnInit {
-    constructor() { }
+
+    public readonly isMobile$ = screenWidth$.pipe(map(width => width <= 620 ? true : false));
+
+    constructor() {
+        //this.isMobile$.subscribe(console.log);
+    }
 
     ngOnInit() { }
 }

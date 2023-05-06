@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterRequest } from 'src/app/core/models/auth/requests/register-request.interface';
+import { RegisterRequest } from 'src/app/core/models/dto/auth/requests/register-request.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({

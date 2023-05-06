@@ -1,1 +1,3 @@
-topics list
+<mat-grid-list [cols]="nbCols$|async" rowHeight="200px" gutterSize="15px">
+    <mat-grid-tile *ngFor="let topic of (topics$|async)"><topic-item [topic]="topic"></topic-item></mat-grid-tile>
+</mat-grid-list>

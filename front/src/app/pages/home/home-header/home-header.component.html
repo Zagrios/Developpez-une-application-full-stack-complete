@@ -1,0 +1,46 @@
+<!-- APP CONTENT -->
+<ng-template #appContent>
+    <div id="app-header">
+        <app-icon (click)="goToHome()"></app-icon>
+        <div id="header-buttons">
+            <!-- DESKTOP BUTTONS -->
+            <ng-container *ngIf="!(isMobile$|async); else isMobile">
+                <button mat-button routerLink="/home/posts" [color]="isOnRoute('/home/posts') && 'primary'">Articles</button>
+                <button mat-button routerLink="/home/topics" [color]="isOnRoute('/home/topics') && 'primary'">Thèmes</button>
+                <button mat-mini-fab routerLink="/home/me" [color]="isOnRoute('/home/me') && 'primary'">
+                    <mat-icon>person_filled</mat-icon>
+                </button>
+            </ng-container>
+            <!-- MOBILE BUTTON -->
+            <ng-template #isMobile>
+                <button mat-button [color]="''" (click)="sidenav?.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </ng-template>
+        </div>
+    </div>
+    <ng-content></ng-content>
+</ng-template>
+
+<!-- IF NOT ON MOBILE : SHOW CONTENT -->
+<ng-template *ngIf="!(isMobile$|async); else isMobile" [ngTemplateOutlet]="appContent"></ng-template>
+
+<!-- ELSE : SHOW IN SIDENAV -->
+<ng-template #isMobile>
+
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav mode="over" position="end" [fixedInViewport]="true">
+            <div>
+                <button mat-button routerLink="/home/posts" [color]="isOnRoute('/home/posts') && 'primary'">Articles</button>
+                <button mat-button routerLink="/home/topics" [color]="isOnRoute('/home/topics') && 'primary'">Thèmes</button>
+            </div>
+            <button mat-mini-fab routerLink="/home/me" [color]="isOnRoute('/home/me') && 'primary'">
+                <mat-icon>person_filled</mat-icon>
+            </button>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <ng-template [ngTemplateOutlet]="appContent"></ng-template>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</ng-template>

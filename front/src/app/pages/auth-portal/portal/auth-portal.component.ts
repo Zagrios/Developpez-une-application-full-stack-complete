@@ -9,13 +9,5 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class AuthPortalComponent {
 
-  constructor(
-    auth: AuthService,
-    router: Router
-  ) {
-    auth.tryAutoLogin().then(logged => {
-      if(!logged){ return; }
-      router.navigateByUrl("/home");
-    });
-  }
+  constructor() {}
 }

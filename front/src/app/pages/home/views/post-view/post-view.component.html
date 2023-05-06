@@ -1,0 +1,16 @@
+<div id="post">
+    <div id="post-header">
+        <button id="back-btn" mat-button routerLink="/home/posts" class="mt-3 ml-3">
+            <mat-icon style="font-size: 2em;">arrow_back</mat-icon>
+        </button>
+        <h1>{{(post$|async)?.title}}</h1>
+    </div>
+    <div id="primary-infos">
+        <span>{{(postDate$|async)}}</span>
+        <span>{{(post$|async)?.author?.username}}</span>
+        <span>{{(post$|async)?.topic?.name}}</span>
+    </div>
+    <p>{{(post$|async)?.content}}</p>
+</div>
+<separator></separator>
+TODO comments

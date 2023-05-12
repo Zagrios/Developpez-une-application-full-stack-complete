@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/core/models/dto/auth/requests/login-request.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { passwordValidator } from 'src/app/core/validators/password.validator';
 
 @Component({
     selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
 
     public readonly loginForm = this.fb.group({
         username: ['', [Validators.required]],
-        password: ['', [Validators.required, Validators.minLength(8)]]
+        password: ['', [Validators.required, passwordValidator]]
     });
 
     constructor(
@@ -36,4 +37,15 @@ export class LoginComponent {
             this.router.navigateByUrl('/home');
         });
     }
+
+    public isPasswordInvalid(): boolean {
+        console.log(!this.loginForm.get('password')?.valid);
+        return !this.loginForm.get('password')?.valid;
+    }
+
+    public isUsernameInvalid(): boolean {
+        return !this.loginForm.get('username')?.valid;
+    }
+
+
 }

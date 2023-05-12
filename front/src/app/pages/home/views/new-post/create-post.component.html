@@ -19,7 +19,7 @@
     <mat-form-field appearance="outline"> 
         <mat-label>Contenu de l'article</mat-label>
         <textarea formControlName="content" matInput name="content" id="content" cols="30" rows="10"></textarea>
-        <mat-error *ngIf="contentInvalid()">Titre de l'article requis</mat-error>
+        <mat-error *ngIf="contentInvalid()">Le contenu de l'article est invalide</mat-error>
     </mat-form-field>
     <button mat-raised-button type="submit" color="primary" [disabled]="postForm.invalid">Créer</button>
 </form>

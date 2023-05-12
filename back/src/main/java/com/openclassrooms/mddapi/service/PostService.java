@@ -35,10 +35,6 @@ public class PostService {
     @Autowired
     private CommentMapper commentMapper;
 
-    public List<Post> getPosts(){
-        return this.postRepository.findAllByOrderByDateDesc();
-    }
-
     public Post getPostById(Long id){
         return this.postRepository.findById(id).orElseThrow();
     }
@@ -59,7 +55,7 @@ public class PostService {
 
     public List<Post> getPostFeed(User user){
         return user.getSubscriptions().stream().flatMap(topic -> {
-            return this.postRepository.findAllByTopicId(topic.getId()).stream();
+            return this.postRepository.findByTopicIdOrderByDateDesc(topic.getId()).stream();
         }).collect(Collectors.toList());
     }
 

@@ -28,6 +28,7 @@ public class Post {
     private String content;
 
     @CreationTimestamp
+    @Column(name = "date")
     private Date date;
 
     @ManyToOne

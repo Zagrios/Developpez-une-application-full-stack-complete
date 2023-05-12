@@ -24,9 +24,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private PostRepository postRepository;
-
     public Optional<User> findById(Long id){
         return this.userRepository.findById(id);
     }
@@ -52,12 +49,6 @@ public class UserService {
         }
 
         return this.userRepository.save(user);
-    }
-
-    public List<Post> getPostFeed(User user){
-        return user.getSubscriptions().stream().flatMap(topic -> {
-            return this.postRepository.findAllByTopicId(topic.getId()).stream();
-        }).collect(Collectors.toList());
     }
 
     public void subscribeTopic(User user, Topic topic){

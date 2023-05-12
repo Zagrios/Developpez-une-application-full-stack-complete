@@ -1,14 +1,13 @@
 package com.openclassrooms.mddapi.dto.response;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@AllArgsConstructor
+@Data
 @Builder
 public class TopicResponse {
     private Long id;
     private String name;
     private String description;
+    private Boolean subscribed;
 }

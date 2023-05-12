@@ -1,0 +1,26 @@
+<div id="user-profile">
+    <form [formGroup]="userForm" (submit)="onSubmit()">
+
+        <h1>Profil utilisateur</h1>
+        <p *ngIf="error$|async">Désolé, une erreur est survenue</p>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Nom d'utilisateur</mat-label>
+            <input matInput formControlName="username" id="email" type="text">
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Adresse email</mat-label>
+            <input matInput formControlName="email" id="email" type="text">
+        </mat-form-field>
+
+        <button id="save-btn" mat-raised-button color="primary" [disabled]="userForm.invalid">Sauvegarder</button>
+
+        <button id="logout-btn" mat-button color="warn" (click)="logOut()">Se déconnecter</button>
+
+    </form>
+</div>
+<separator></separator>
+<mat-grid-list [cols]="nbCols$|async" rowHeight="200px" gutterSize="15px">
+    <mat-grid-tile *ngFor="let topic of (topics$|async)"><topic-item [topic]="topic" [isOnUserPage]="true"></topic-item></mat-grid-tile>
+</mat-grid-list>

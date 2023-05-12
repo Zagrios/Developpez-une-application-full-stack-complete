@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterRequest } from 'src/app/core/models/auth/requests/register-request.interface';
+import { RegisterRequest } from 'src/app/core/models/dto/auth/requests/register-request.interface';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { passwordValidator } from 'src/app/core/validators/password.validator';
 
 @Component({
     selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
     public readonly registerForm = this.fb.group({
         username: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8)]]
+        password: ['', [Validators.required, passwordValidator]]
     });
 
     constructor(
@@ -53,4 +54,17 @@ export class RegisterComponent implements OnInit {
             this.router.navigateByUrl('/home');
         })
     }
+
+    public isUsernameInvalid(): boolean {
+        return !this.registerForm.get('username')?.valid;
+    }
+
+    public isEmailInvalid(): boolean {
+        return !this.registerForm.get('email')?.valid;
+    }
+
+    public isPasswordInvalid(): boolean {
+        return !this.registerForm.get('password')?.valid;
+    }
+
 }

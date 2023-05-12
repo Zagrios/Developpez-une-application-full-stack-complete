@@ -1,0 +1,26 @@
+@import '../../../../styles/responsive.scss';
+
+:host{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+
+    @include phone-screen{
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+}
+
+p{
+    background-color: #EEEEEE;
+    min-height: 70px;
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+span{
+    @include phone-screen{
+        text-align: end;
+    }
+}

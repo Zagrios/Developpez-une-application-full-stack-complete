@@ -39,7 +39,6 @@ export class LoginComponent {
     }
 
     public isPasswordInvalid(): boolean {
-        console.log(!this.loginForm.get('password')?.valid);
         return !this.loginForm.get('password')?.valid;
     }
 

@@ -1,0 +1,25 @@
+<mat-error *ngIf="error$|async" class="text-center">Désolé, une erreur est survenue</mat-error>
+<button id="back-btn" mat-button routerLink="/home/posts" class="mt-3 ml-3">
+    <mat-icon style="font-size: 2em;">arrow_back</mat-icon>
+</button>
+<h1>Créer un nouvel article</h1>
+<form [formGroup]="postForm" action="" (submit)="submitPost()">
+    <mat-form-field appearance="outline">
+        <mat-label>Séléctionner un thème</mat-label>
+        <mat-select formControlName="topicId">
+            <mat-option *ngFor="let topic of (topics$|async)" [value]="topic.id">{{topic.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="topicIdInvalid()">Thème requis</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Titre de l'article</mat-label>
+        <input formControlName="title" matInput type="text" name="title" id="title">
+        <mat-error *ngIf="titleInvalid()">Titre de l'article requis</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline"> 
+        <mat-label>Contenu de l'article</mat-label>
+        <textarea formControlName="content" matInput name="content" id="content" cols="30" rows="10"></textarea>
+        <mat-error *ngIf="contentInvalid()">Le contenu de l'article est invalide</mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary" [disabled]="postForm.invalid">Créer</button>
+</form>

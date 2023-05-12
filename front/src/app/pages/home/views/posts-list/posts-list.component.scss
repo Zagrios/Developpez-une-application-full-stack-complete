@@ -1,0 +1,21 @@
+@import "../../../../../styles/responsive.scss";
+
+:host{
+    padding: 20px 20px 0 20px;
+}
+
+#posts-header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 20px;
+
+    justify-content: space-between;
+
+    @include phone-screen{
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+}

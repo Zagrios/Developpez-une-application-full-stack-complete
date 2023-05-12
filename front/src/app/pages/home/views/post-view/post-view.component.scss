@@ -1,0 +1,84 @@
+@import '../../../../../styles/responsive.scss';
+
+:host{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#post{
+    padding: 2rem 3rem 0 3rem;
+    overflow: hidden;
+
+    width: 100%;
+
+    #post-header{
+
+        position: relative;
+
+        h1{
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+
+        button{
+            position: absolute;
+            top: 0;
+            translate: -100% -5px;
+        }
+
+    }
+    
+    
+
+    #primary-infos{
+        max-width: 100%;
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        column-gap: 70px;
+        margin-bottom: 20px;
+    }
+
+    p{
+        overflow-wrap: break-word;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+ul{
+    width: 700px;
+    max-width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    @include phone-screen{
+        gap: 20px;
+        padding: 0 1rem;
+    }
+}
+
+form{
+    display: flex;
+    position: relative;
+    width: 500px;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    
+    button[type='submit']{
+        position: absolute;
+        right: 0;
+        translate: 150% -10px;
+        @include phone-screen{
+            translate: -50% -10px;
+        }
+    }
+}

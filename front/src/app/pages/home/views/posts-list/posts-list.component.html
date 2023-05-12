@@ -1,0 +1,10 @@
+<div id="posts-header">
+    <button mat-raised-button routerLink="/home/new-post" color="primary">Créer un article</button>
+    <button mat-button (click)="toogleOrder()">
+        <span>Trier par</span>
+        <mat-icon>{{(orderAsc$|async) ? 'arrow_downward' : 'arrow_upward'}}</mat-icon>
+    </button>
+</div>
+<mat-grid-list [cols]="nbCols$|async" rowHeight="200px" gutterSize="15px">
+    <mat-grid-tile *ngFor="let post of (posts$|async)"><post-item [post]="post"></post-item></mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,31 @@
+<div id="post">
+    <div id="post-header">
+        <button id="back-btn" mat-button routerLink="/home/posts" class="mt-3 ml-3">
+            <mat-icon style="font-size: 2em;">arrow_back</mat-icon>
+        </button>
+        <h1>{{(post$|async)?.title}}</h1>
+    </div>
+    <div id="primary-infos">
+        <span>{{(postDate$|async)}}</span>
+        <span>{{(post$|async)?.author?.username}}</span>
+        <span>{{(post$|async)?.topic?.name}}</span>
+    </div>
+    <p [innerHTML]="(post$|async)?.content|lineBreak"></p>
+</div>
+<separator></separator>
+<ul>
+    Commentaires
+    <comment-item *ngFor="let comment of (comments$|async)" [comment]="comment"></comment-item>
+</ul>
+<form (submit)="addComment()" [formGroup]="commentForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Écrivez ici votre commentaire</mat-label>
+        <textarea matInput matNativeControl type="text" id="content" formControlName="content"></textarea>
+        <mat-error *ngIf="commentContentInvalid">
+            Le contenu du commentaire est invalide (entre 10 et 255 caractères)
+        </mat-error>
+    </mat-form-field>
+    <button mat-mini-fab color="" type="submit">
+        <mat-icon color="primary" class="send">send</mat-icon>
+    </button>
+</form>
